@@ -12,6 +12,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "blueimp-load-image": "^2.26.0",
+    "bootstrap": "^4.4.1",
     "load-image-react": "^1.0.2",
     "plotly.js": "^1.52.1",
     "react": "^16.12.0",
