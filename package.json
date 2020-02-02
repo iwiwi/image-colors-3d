@@ -6,12 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/blueimp-load-image": "^2.23.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "blueimp-load-image": "^2.26.0",
+    "load-image-react": "^1.0.2",
+    "plotly.js": "^1.52.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-plotly.js": "^2.4.0",
     "react-scripts": "3.3.1",
     "typescript": "~3.7.2"
   },
@@ -35,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-plotly.js": "^2.2.4"
   }
 }
