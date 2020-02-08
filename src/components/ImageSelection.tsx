@@ -1,8 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import loadImage from 'blueimp-load-image';
+import { FileBlobOrURL } from '../Types';
 
 interface Props {
-  onChange: (file_blob_or_url: File | Blob | string | null) => void;
+  onChange: (imageFile: FileBlobOrURL | null) => void;
 }
 
 class ImageSelection extends React.Component<Props> {

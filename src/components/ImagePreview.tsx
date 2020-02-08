@@ -1,8 +1,9 @@
 import React, { ChangeEvent } from 'react';
 import loadImage from 'blueimp-load-image';
+import { FileBlobOrURL } from '../Types'
 
 interface Props {
-    fileBlobOrURL: File | Blob | string;
+    fileBlobOrURL: FileBlobOrURL;
 }
 
 interface State {
