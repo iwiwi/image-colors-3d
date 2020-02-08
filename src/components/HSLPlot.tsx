@@ -157,6 +157,7 @@ class HSLPlot extends React.Component<Props, State>  {
             xaxis: {range: [-0.5, 0.5]},
             yaxis: {range: [-0.5, 0.5]},
             zaxis: {range: [-0.5, 0.5]},
+            aspectmode: "cube",
             },
               autosize: true, /*width: 600, height: 600*/
               margin: {
