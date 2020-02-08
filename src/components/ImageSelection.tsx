@@ -52,7 +52,11 @@ class ImageSelection extends React.Component<Props> {
         */}
         <div className="form-group custom-file">
           <input id="imageFile" type="file" className="custom-file-input" onChange={this.handleFileChange} />
-          <label className="custom-file-label" htmlFor="imageFile">File</label>
+          <label className="custom-file-label" htmlFor="imageFile">Select an image file</label>
+        </div>
+        <div className="mt-2">
+        or <strong>drag & drop</strong> an image file, <br />
+        or <strong>paste</strong> an image <small>(<strong>Ctrl+V</strong> or <strong>⌘+V</strong>)</small>.
         </div>
       </form>
     );
