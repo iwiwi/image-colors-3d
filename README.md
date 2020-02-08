@@ -29,7 +29,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn deploy`
 
-This will deploy the `build` directory to GitHub pages.
+これで `build` ディレクトリが GitHub pages にデプロイされる。
+
+### `tslint --fix --project .`
+
+Lintをかける。
 
 
 ### `yarn eject`
