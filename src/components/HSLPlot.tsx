@@ -138,6 +138,7 @@ class HSLPlot extends React.Component<Props, State>  {
     ;
     } else {
       return (
+        <div>
           <Plot
             data={[
               {
@@ -172,6 +173,8 @@ class HSLPlot extends React.Component<Props, State>  {
               width: "100%"
             }}
           />
+          c.f. <a href="https://en.wikipedia.org/wiki/Color_solid">color solid</a>
+        </div>
         );
     }
   }
