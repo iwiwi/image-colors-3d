@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "push": "gh-pages -d build",
+    "deploy": "yarn build && yarn push"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,6 +46,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-plotly.js": "^2.2.4"
-  }
+    "@types/react-plotly.js": "^2.2.4",
+    "gh-pages": "^2.2.0"
+  },
+  "homepage": "https://iwiwi.github.io/image-colors-3d/"
 }
