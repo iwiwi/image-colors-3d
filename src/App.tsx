@@ -60,16 +60,20 @@ class App extends React.Component<Props, State>  {
           <div className="row">
             <div className="col-sm-12">
               <ImageSelection onChange={this.handleImageChange} />
-              {
-                this.state.image_file_blob_or_url === null ?
-                  "" : 
-                  <div>
-                    <ImagePreview fileBlobOrURL={this.state.image_file_blob_or_url} />
-                    <HSLPlot fileBlobOrURL={this.state.image_file_blob_or_url} />
-                  </div>
-              }
             </div>
           </div>
+            {
+                this.state.image_file_blob_or_url === null ?
+                  "" : 
+                  <div className="row mt-5">
+                  <div className="col-md-12 col-lg-6">
+                    <HSLPlot fileBlobOrURL={this.state.image_file_blob_or_url} />
+                  </div>
+                  <div className="col-md-12 col-lg-6">
+                    <ImagePreview fileBlobOrURL={this.state.image_file_blob_or_url} />
+                  </div>
+               </div>
+            }
         </div>
       </div>
     );

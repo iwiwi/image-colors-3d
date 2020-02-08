@@ -55,7 +55,7 @@ class ImageSelection extends React.Component<Props> {
           <label className="custom-file-label" htmlFor="imageFile">Select an image file</label>
         </div>
         <div className="mt-2">
-        or <strong>drag & drop</strong> an image file, <br />
+        {/*or <strong>drag & drop</strong> an image file, <br />*/}
         or <strong>paste</strong> an image <small>(<strong>Ctrl+V</strong> or <strong>⌘+V</strong>)</small>.
         </div>
       </form>
