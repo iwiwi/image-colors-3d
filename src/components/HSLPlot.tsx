@@ -126,41 +126,50 @@ class HSLPlot extends React.Component<Props, State>  {
   
   // https://codepen.io/nicolaskruchten/pen/ERgBZX
   render() {
-    return (
-        <Plot
-          data={[
-            {
-              x: this.state.x,
-              y: this.state.y,
-              z: this.state.z,
-              type: 'scatter3d',
-              mode: 'markers',
-              marker: {color: this.state.colors, size: 3},
+    if (this.state.x.length == 0) {
+      return <div className="d-flex justify-content-center">
+      <div className="spinner-border" role="status">
+      <span className="sr-only">Loading...</span>
+    </div>
+    </div>
+    ;
+    } else {
+      return (
+          <Plot
+            data={[
+              {
+                x: this.state.x,
+                y: this.state.y,
+                z: this.state.z,
+                type: 'scatter3d',
+                mode: 'markers',
+                marker: {color: this.state.colors, size: 3},
+              },
+            ]}
+            layout={ {
+              /*
+              xaxis: {range: [-0.5, 0.5] },
+              */
+            scene: {
+            xaxis: {range: [-0.5, 0.5]},
+            yaxis: {range: [-0.5, 0.5]},
+            zaxis: {range: [-0.5, 0.5]},
             },
-          ]}
-          layout={ {
-            /*
-            xaxis: {range: [-0.5, 0.5] },
-            */
-           scene: {
-           xaxis: {range: [-0.5, 0.5]},
-           yaxis: {range: [-0.5, 0.5]},
-           zaxis: {range: [-0.5, 0.5]},
-          },
-            autosize: true, /*width: 600, height: 600*/
-            margin: {
-              l: 0,
-              r: 0,
-              b: 0,
-              t: 0
-              } 
-          }}
-          useResizeHandler={true}
-          style={{
-            width: "100%"
-          }}
-        />
-      );
+              autosize: true, /*width: 600, height: 600*/
+              margin: {
+                l: 0,
+                r: 0,
+                b: 0,
+                t: 0
+                } 
+            }}
+            useResizeHandler={true}
+            style={{
+              width: "100%"
+            }}
+          />
+        );
+    }
   }
 }
 

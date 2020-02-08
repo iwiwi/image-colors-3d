@@ -37,7 +37,12 @@ class ImagePreview extends React.Component<Props, State>  {
   
   render() {
     if (this.state.img_src === null) {
-        return "";
+        return <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+      </div>
+      ;
     } else {
         return <img src={this.state.img_src} style={{ maxWidth: "100%" }} className="d-block mx-auto" />
     }
