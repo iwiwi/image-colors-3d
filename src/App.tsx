@@ -1,26 +1,25 @@
-import React from 'react';
-import bsCustomFileInput from 'bs-custom-file-input';
+import React from "react";
+import bsCustomFileInput from "bs-custom-file-input";
 
-import logo from './logo.svg';
-import './App.css';
-import ImageSelection from './components/ImageSelection'
-import ImagePreview from './components/ImagePreview'
-import HSLPlot from './components/HSLPlot'
-import { FileBlobOrURL } from './Types'
+import logo from "./logo.svg";
+import "./App.css";
+import ImageSelection from "./components/ImageSelection";
+import ImagePreview from "./components/ImagePreview";
+import HSLPlot from "./components/HSLPlot";
+import { FileBlobOrURL } from "./Types";
 
 const NavBar = () => {
   // view-source:https://bs-custom-file-input.netlify.com/
-  return <div className="App">
-    <nav className="navbar navbar-expand navbar-dark bg-dark text-white">
-      <div className="container">
-        <h1 className="mb-0 h5 py-1">Image Color 3D</h1>
-      </div>
-    </nav>
+  return (
+    <div className="App">
+      <nav className="navbar navbar-expand navbar-dark bg-dark text-white">
+        <div className="container">
+          <h1 className="mb-0 h5 py-1">Image Color 3D</h1>
+        </div>
+      </nav>
     </div>
+  );
 };
-
-interface Props {
-}
 
 interface State {
   imageFile: FileBlobOrURL | null;
@@ -28,13 +27,13 @@ interface State {
   errorMessage: string | null;
 }
 
-class App extends React.Component<Props, State>  {
-  constructor(props: Props){
+class App extends React.Component<{}, State> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       imageFile: null,
       imageKey: 0,
-      errorMessage: null,
+      errorMessage: null
     };
 
     this.handleImageChange = this.handleImageChange.bind(this);
@@ -42,45 +41,57 @@ class App extends React.Component<Props, State>  {
   }
 
   componentDidMount() {
-    bsCustomFileInput.init()
+    bsCustomFileInput.init();
   }
 
   handleImageChange(imageFile: FileBlobOrURL | null) {
     if (imageFile === null) {
       this.setState({
         imageFile: null,
-        errorMessage: null,
-      })
+        errorMessage: null
+      });
       return;
     }
     this.setState({
-      imageFile: imageFile,
+      imageFile,
       imageKey: this.state.imageKey + 1,
-      errorMessage: null,
+      errorMessage: null
     });
   }
 
   handleError(errorMessage: string) {
     this.setState({
-      errorMessage: errorMessage,
+      errorMessage
     });
   }
 
   render() {
     let result;
     if (this.state.errorMessage) {
-      result = <div className="alert alert-danger mt-5" role="alert">
-        { this.state.errorMessage }
-      </div>;
+      result = (
+        <div className="alert alert-danger mt-5" role="alert">
+          {this.state.errorMessage}
+        </div>
+      );
     } else if (this.state.imageFile) {
-      result = <div className="row mt-5">
-        <div className="col-md-12 col-lg-6">
-          <HSLPlot key={this.state.imageKey} imageFile={this.state.imageFile} onError={this.handleError} />
+      result = (
+        <div className="row mt-5">
+          <div className="col-md-12 col-lg-6">
+            <HSLPlot
+              key={this.state.imageKey}
+              imageFile={this.state.imageFile}
+              onError={this.handleError}
+            />
+          </div>
+          <div className="col-md-12 col-lg-6">
+            <ImagePreview
+              key={this.state.imageKey}
+              imageFile={this.state.imageFile}
+              onError={this.handleError}
+            />
+          </div>
         </div>
-        <div className="col-md-12 col-lg-6">
-          <ImagePreview key={this.state.imageKey} imageFile={this.state.imageFile} onError={this.handleError}/>
-        </div>
-      </div>;
+      );
     } else {
       result = null;
     }
@@ -94,12 +105,11 @@ class App extends React.Component<Props, State>  {
               <ImageSelection onChange={this.handleImageChange} />
             </div>
           </div>
-          { result }
+          {result}
         </div>
       </div>
     );
   }
 }
-
 
 export default App;
