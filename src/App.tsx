@@ -38,6 +38,7 @@ class App extends React.Component<Props, State>  {
     };
 
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   componentDidMount() {
@@ -59,20 +60,25 @@ class App extends React.Component<Props, State>  {
     });
   }
 
+  handleError(errorMessage: string) {
+    this.setState({
+      errorMessage: errorMessage,
+    });
+  }
+
   render() {
     let result;
     if (this.state.errorMessage) {
       result = <div className="alert alert-danger mt-5" role="alert">
-        <h3>Error</h3>
         { this.state.errorMessage }
       </div>;
     } else if (this.state.imageFile) {
       result = <div className="row mt-5">
         <div className="col-md-12 col-lg-6">
-          <HSLPlot key={this.state.imageKey} fileBlobOrURL={this.state.imageFile} />
+          <HSLPlot key={this.state.imageKey} imageFile={this.state.imageFile} onError={this.handleError} />
         </div>
         <div className="col-md-12 col-lg-6">
-          <ImagePreview key={this.state.imageKey} fileBlobOrURL={this.state.imageFile} />
+          <ImagePreview key={this.state.imageKey} imageFile={this.state.imageFile} onError={this.handleError}/>
         </div>
       </div>;
     } else {

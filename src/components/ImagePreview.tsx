@@ -3,7 +3,8 @@ import loadImage from 'blueimp-load-image';
 import { FileBlobOrURL } from '../Types'
 
 interface Props {
-    fileBlobOrURL: FileBlobOrURL;
+    imageFile: FileBlobOrURL;
+    onError: (errorMessage: string) => void;
 }
 
 interface State {
@@ -18,10 +19,10 @@ class ImagePreview extends React.Component<Props, State>  {
     };
 
     loadImage(
-        props.fileBlobOrURL,
+        props.imageFile,
         (data) => {
             if (data instanceof Event) {
-              alert('error!');
+              this.props.onError("Loading image file failed");
             } else if (data instanceof HTMLImageElement) {
               alert('image!');
             } else {

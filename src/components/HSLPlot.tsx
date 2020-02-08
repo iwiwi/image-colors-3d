@@ -1,9 +1,11 @@
 import React, { ChangeEvent } from 'react';
 import loadImage from 'blueimp-load-image';
 import Plot from 'react-plotly.js';
+import { FileBlobOrURL } from '../Types';
 
 interface Props {
-    fileBlobOrURL: File | Blob | string;
+    imageFile: FileBlobOrURL;
+    onError: (errorMessage: string) => void;
 }
 
 interface State {
@@ -67,10 +69,10 @@ class HSLPlot extends React.Component<Props, State>  {
     };
 
     loadImage(
-        props.fileBlobOrURL,
+        props.imageFile,
         (data) => {
             if (data instanceof Event) {
-              alert('error!');
+              this.props.onError("Loading image file failed");
             } else if (data instanceof HTMLImageElement) {
               alert('image!');
             } else {
@@ -80,6 +82,7 @@ class HSLPlot extends React.Component<Props, State>  {
         },
         {
             maxWidth: 100,
+            maxHeight: 100,
             canvas: true,
         }
     );
