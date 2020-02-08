@@ -38,7 +38,7 @@ class ImagePreview extends React.Component<Props, State>  {
     if (this.state.img_src === null) {
         return "";
     } else {
-        return <img src={this.state.img_src} style={{ maxWidth: "100%" }} />
+        return <img src={this.state.img_src} style={{ maxWidth: "100%" }} className="d-block mx-auto" />
     }
   }
 }
