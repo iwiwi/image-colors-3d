@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import loadImage from "blueimp-load-image";
 import Plot from "react-plotly.js";
 import { FileBlobOrURL } from "../Types";
@@ -15,7 +15,7 @@ interface State {
   colors: string[];
 }
 
-const RGBToHSL = (r: number, g: number, b: number) => {
+const rgbToHSL = (r: number, g: number, b: number) => {
   // https://css-tricks.com/converting-color-spaces-in-javascript/
   // Make r, g, and b fractions of 1
   r /= 255;
@@ -72,7 +72,6 @@ class HSLPlot extends React.Component<Props, State> {
         } else if (data instanceof HTMLImageElement) {
           alert("image!");
         } else {
-          // this.setState({img_src: data.toDataURL()});
           this.analyzeImage(data);
         }
       },
@@ -98,7 +97,7 @@ class HSLPlot extends React.Component<Props, State> {
     const colors = [];
     for (let i = 0; i < pixels.length; i += 4) {
       const [r, g, b] = [pixels[i], pixels[i + 1], pixels[i + 2]];
-      const [h, s, l] = RGBToHSL(r, g, b);
+      const [h, s, l] = rgbToHSL(r, g, b);
 
       const z = l - 0.5;
       const angle = (h / 180) * Math.PI;

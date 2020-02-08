@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import loadImage from "blueimp-load-image";
 import { FileBlobOrURL } from "../Types";
 
@@ -8,14 +8,14 @@ interface Props {
 }
 
 interface State {
-  img_src: string | null;
+  imgSrc: string | null;
 }
 
 class ImagePreview extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      img_src: null
+      imgSrc: null
     };
 
     loadImage(
@@ -26,18 +26,17 @@ class ImagePreview extends React.Component<Props, State> {
         } else if (data instanceof HTMLImageElement) {
           alert("image!");
         } else {
-          this.setState({ img_src: data.toDataURL() });
+          this.setState({ imgSrc: data.toDataURL() });
         }
       },
       {
-        // maxWidth: "600",
         canvas: true
       }
     );
   }
 
   render() {
-    if (this.state.img_src === null) {
+    if (this.state.imgSrc === null) {
       return (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status">
@@ -48,9 +47,10 @@ class ImagePreview extends React.Component<Props, State> {
     } else {
       return (
         <img
-          src={this.state.img_src}
+          src={this.state.imgSrc}
           style={{ maxWidth: "100%" }}
           className="d-block mx-auto"
+          alt="preview"
         />
       );
     }

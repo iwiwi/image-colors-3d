@@ -1,7 +1,6 @@
 import React from "react";
 import bsCustomFileInput from "bs-custom-file-input";
 
-import logo from "./logo.svg";
 import "./App.css";
 import ImageSelection from "./components/ImageSelection";
 import ImagePreview from "./components/ImagePreview";

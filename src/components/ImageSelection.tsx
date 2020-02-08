@@ -1,5 +1,4 @@
-import React, { ChangeEvent } from "react";
-import loadImage from "blueimp-load-image";
+import React from "react";
 import { FileBlobOrURL } from "../Types";
 
 interface Props {
