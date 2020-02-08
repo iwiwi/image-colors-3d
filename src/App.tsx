@@ -24,6 +24,7 @@ interface Props {
 
 interface State {
   imageFile: FileBlobOrURL | null;
+  imageKey: number;
   errorMessage: string | null;
 }
 
@@ -32,6 +33,7 @@ class App extends React.Component<Props, State>  {
     super(props);
     this.state = {
       imageFile: null,
+      imageKey: 0,
       errorMessage: null,
     };
 
@@ -42,13 +44,18 @@ class App extends React.Component<Props, State>  {
     bsCustomFileInput.init()
   }
 
-  handleImageChange(file_blob_or_url: FileBlobOrURL | null) {
-    if (file_blob_or_url === null) {
+  handleImageChange(imageFile: FileBlobOrURL | null) {
+    if (imageFile === null) {
+      this.setState({
+        imageFile: null,
+        errorMessage: null,
+      })
       return;
     }
-
     this.setState({
-      imageFile: file_blob_or_url,
+      imageFile: imageFile,
+      imageKey: this.state.imageKey + 1,
+      errorMessage: null,
     });
   }
 
@@ -60,12 +67,12 @@ class App extends React.Component<Props, State>  {
         { this.state.errorMessage }
       </div>;
     } else if (this.state.imageFile) {
-      result =      <div className="row mt-5">
+      result = <div className="row mt-5">
         <div className="col-md-12 col-lg-6">
-          <HSLPlot fileBlobOrURL={this.state.imageFile} />
+          <HSLPlot key={this.state.imageKey} fileBlobOrURL={this.state.imageFile} />
         </div>
         <div className="col-md-12 col-lg-6">
-          <ImagePreview fileBlobOrURL={this.state.imageFile} />
+          <ImagePreview key={this.state.imageKey} fileBlobOrURL={this.state.imageFile} />
         </div>
       </div>;
     } else {
