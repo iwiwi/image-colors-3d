@@ -88,11 +88,18 @@ class ImageSelection extends React.Component<Props, LocalState>  {
   render() {
     //     {this.state.img === null ? "" : this.state.img}
     return (
-      <div>
-        <input type="file" onChange={this.handleFileChange} />
-        <input id="url" type="url" placeholder="URL"  onChange={this.handleURLChange} />
+      <form>
+        {/*
+        <div className="form-group">
+          <input id="url" type="url" placeholder="URL" className="form-control" onChange={this.handleURLChange} />
+        </div>
+        */}
+        <div className="form-group custom-file">
+          <input id="imageFile" type="file" className="custom-file-input" onChange={this.handleFileChange} />
+          <label className="custom-file-label" htmlFor="imageFile">File</label>
+        </div>
         <img src={this.state.file}/>
-      </div>
+      </form>
     );
   }
 }
