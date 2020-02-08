@@ -98,10 +98,10 @@ class HSLPlot extends React.Component<Props, State>  {
         const [h, s, l] = RGBToHSL(r, g, b);
         //console.log(r, g, b);
 
-        const z = l;
+        const z = l - 0.5;
         console.log(h);
         const angle = h / 180 * Math.PI;
-        const radius = Math.sqrt(0.5 ** 2 - (z - 0.5) ** 2) * s;
+        const radius = Math.sqrt(0.5 ** 2 - z ** 2) * s;
         const x = Math.sin(angle) * radius;
         const y = Math.cos(angle) * radius;
 
@@ -124,6 +124,7 @@ class HSLPlot extends React.Component<Props, State>  {
     })
   }
   
+  // https://codepen.io/nicolaskruchten/pen/ERgBZX
   render() {
     return (
         <Plot
@@ -136,9 +137,28 @@ class HSLPlot extends React.Component<Props, State>  {
               mode: 'markers',
               marker: {color: this.state.colors, size: 3},
             },
-            //{type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
           ]}
-          layout={ {width: 600, height: 600} }
+          layout={ {
+            /*
+            xaxis: {range: [-0.5, 0.5] },
+            */
+           scene: {
+           xaxis: {range: [-0.5, 0.5]},
+           yaxis: {range: [-0.5, 0.5]},
+           zaxis: {range: [-0.5, 0.5]},
+          },
+            autosize: true, /*width: 600, height: 600*/
+            margin: {
+              l: 0,
+              r: 0,
+              b: 0,
+              t: 0
+              } 
+          }}
+          useResizeHandler={true}
+          style={{
+            width: "100%"
+          }}
         />
       );
   }

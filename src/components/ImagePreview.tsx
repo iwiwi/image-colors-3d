@@ -28,7 +28,7 @@ class ImagePreview extends React.Component<Props, State>  {
             }
         },
         {
-            maxWidth: 600,
+            // maxWidth: "600",
             canvas: true,
         }
     );
@@ -38,7 +38,7 @@ class ImagePreview extends React.Component<Props, State>  {
     if (this.state.img_src === null) {
         return "";
     } else {
-        return <img src={this.state.img_src} />
+        return <img src={this.state.img_src} style={{ maxWidth: "100%" }} />
     }
   }
 }
